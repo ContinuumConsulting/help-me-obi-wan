@@ -11,5 +11,8 @@
     "url": "git@github.com:vizify/help-me-obi-wan.git"
   },
   "author": "Patrick Stein <lylepstein@gmail.com>",
-  "license": "Unlicense"
+  "license": "Unlicense",
+  "engines": {
+    "node": ">=0.10"
+  }
 }

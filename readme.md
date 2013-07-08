@@ -25,8 +25,10 @@ Download the repo.  No depedencies.
 # Using
 
 ```bash
-./main.js
+./main.js [PORT]
 ```
+
+Port defaults to 80.
 
 That's it.  Any text (UTF8) POSTed to `/` will be saved to the current
 working directory in a file named with the date/time of the POST.

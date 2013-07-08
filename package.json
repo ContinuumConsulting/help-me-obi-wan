@@ -1,0 +1,15 @@
+{
+  "name": "help-me-obi-wan",
+  "version": "1.0.0",
+  "description": "You're my only hope",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:vizify/help-me-obi-wan.git"
+  },
+  "author": "Patrick Stein <lylepstein@gmail.com>",
+  "license": "Unlicense"
+}

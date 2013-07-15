@@ -7,7 +7,7 @@ var http = require('http')
 var server = http.createServer(function(req, res) {
   var data = [];
   var length = 0;
-  var date = new Date().toString()
+  var filename = 'data-' + (new Date().toString());
     .replace(/\s+GMT.*$/, '')
     .toLowerCase()
     .replace(/\s+/g, '-')
@@ -29,7 +29,7 @@ var server = http.createServer(function(req, res) {
       data = [];
       req.removeAllListeners('data');
       req.removeAllListeners('end');
-      console.log('Oversize:', date);
+      console.log('Oversize:', filename);
       res.writeHead(413, {'Access-Control-Allow-Origin': '*', 'Content-Type': 'text/plain'});
       res.end('Nope');
     }
@@ -37,13 +37,13 @@ var server = http.createServer(function(req, res) {
   req.on('end', function() {
     var str = Buffer.concat(data, length).toString('utf8');
 
-    fs.writeFile(date, str, function(err) {
+    fs.writeFile(filename, str, function(err) {
       if (err) {
         console.log('Error:', err.stack || err.message || err);
         res.writeHead(500, {'Access-Control-Allow-Origin': '*', 'Content-Type': 'text/plain'});
         res.end('Fail');
       } else {
-        console.log('Wrote:', date);
+        console.log('Wrote:', filename);
         res.writeHead(201, {'Access-Control-Allow-Origin': '*', 'Content-Type': 'text/plain'});
         res.end('Ok');
       }

@@ -7,12 +7,12 @@ var http = require('http')
 var server = http.createServer(function(req, res) {
   var data = [];
   var length = 0;
-  var filename = 'data-' + (new Date().toString());
+  var filename = 'data-' + (new Date().toString()
     .replace(/\s+GMT.*$/, '')
     .toLowerCase()
     .replace(/\s+/g, '-')
     .replace(/:/g, '.')
-    ;
+    );
 
   if (req.method != 'POST') {
     res.writeHead(200, {'Content-Type': 'text/plain', 'Access-Control-Allow-Origin': '*'});

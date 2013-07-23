@@ -37,6 +37,15 @@ var server = http.createServer(function(req, res) {
   req.on('end', function() {
     var str = Buffer.concat(data, length).toString('utf8');
 
+    // This dude keeps posting bogus data which pollutes the logs
+    try {
+      if (str.match(/___2pac/)) {
+        res.writeHead(403, {'Content-Type': 'text/plain'});
+        res.end('Go away, jerkwad');
+        return;
+      }
+    } catch (err) {}
+
     fs.writeFile(filename, str, function(err) {
       if (err) {
         console.log('Error:', err.stack || err.message || err);
